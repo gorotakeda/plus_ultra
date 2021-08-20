@@ -1,24 +1,73 @@
-# README
+# アプリケーション名
+ plus_ultra
+# アプリケーション概要
+ 性別、年代、目的に適した運動と食事の情報を得ることができるアプリ。
+# URL
+ https://plus-ultra-35661.herokuapp.com/
+# テスト用アカウント
+Basic認証: ユーザー名「goro」 パスワード 「0000」
+# 利用方法
+ userは新規投稿ができる。また、性別、年代、目的別で検索をかけることで自分に最適な情報だけを閲覧することができる。
+# 目指した課題解決
+ ダイエットや健康に関する運動、食事法に関しての情報が多すぎて何をやればいいのか分からない人が、性別、年代、目的を検索すれば,今の自分の目的に最適な知識を得ることができる。
+# 洗い出した要件
+|優先順位 （高：３、中：２、低：１）|機能|目的|詳細|ストーリー|見積もり（所要時間）|
+|------|----|---|---|---------|----------|
+|3 |DB設計|アプリ作成の全体像を把握するため|作成テーブル users,post,comment||3|
+|3|コメント投稿機能|ユーザーが投稿に対してコメントするため|投稿詳細ページにフォーマットを設置、コメントすることできる。|postトップページから投稿を選択すると詳細ページに遷移し、詳細ページのコメント欄からコメント入力する。|10|
+|3|ユーザー管理機能|deviseを用いたユーザー管理機能|新規登録、ログイン、ログアウトができる。ログイン時はログアウト表示がでる。|投稿を閲覧したい人、投稿をしたい人は新規登録、ログインする必要がある。|10|
+|3|投稿、一覧表示機能|ユーザーが見たい投稿を選びやすくするため。|一覧ではnickname、titleを表示させる。|投稿するとトップページに遷移し、投稿内容が見ることができる。|6|
+|3|新規投稿機能|ダイエット、食事等に関係する情報を投稿するため。|新規投稿ではtitle、meal、workout、sex、age、purposeを登録して投稿ボタンを押すと投稿一覧ページに遷移し、投稿が表示されているようにする。|一覧ページの「投稿」から新規投稿ページに遷移し、新規投稿を行う。|10|
+|3|投稿詳細表示機能|投稿内容を詳しく表示させるため。|ログイン中のユーザーは投稿一覧ページから特定の投稿を選択すると詳細ページに遷移する。投稿詳細ページではtitle、meal、workout、sex、age、purposeが表示させる。|ログイン中のユーザーは投稿の詳細を閲覧するために、一覧ページから特定の投稿を選び投稿詳細ページへ遷移する。|10|
+|3|投稿編集機能|投稿内容を編集するため。|ログイン中のユーザーかつ、投稿した本人は編集ボタンから編集ページに遷移して、自身の投稿を編集できる。編集ページではtitle、meal、workout、sex、age、purposeを編集できる。|ログイン中のユーザーかつ、投稿した本人のみが投稿詳細ページから投稿編集ページへ遷移でき、自身の投稿を編集できる。|10|
+|3|投稿削除機能|投稿を削除するため。|ログイン中ユーザーかつ、投稿者本人は削除ボタンから自分の投稿をDBから削除する。|ログイン中のユーザーでかつ、投稿した本人のみが自身の投稿を削除できる。|5|
+|3|投稿検索機能|自分に適した投稿を検索するため。|ログインしているユーザーは投稿一覧ページにある検索欄からsex,age,purposeを選択し自身に適した投稿を検索し、投稿検索ページに遷移し、そこから閲覧したい投稿を選ぶことができる。||10|
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# 実装予定の機能
+|優先順位 （高：３、中：２、低：１）|機能|目的|詳細|ストーリー|見積もり（所要時間）|
+|------|----|---|---|---------|----------|
+|2|ユーザー詳細表示機能|特定のユーザーの今までの投稿を表示するため|ユーザーは投稿詳細ページの投稿者名をクリックするとユーザー詳細ページに遷移する。|特定のユーザーの投稿のみを閲覧したい時に、詳細ページからユーザー詳細ページに遷移する。|10|
+|2|いいね機能|投稿に対して「いいね」をするため。 |ログイン中のユーザーは投稿詳細ページにあるいいねボタンを押すと投稿に対して「いいね」することができる|気に入った投稿に対していいねを送ることができる。|7|
+# ローカルでの動作方法
 
-Things you may want to cover:
+# テーブル設計
+[![Image from Gyazo](https://i.gyazo.com/5d7280c3d6f58650421c03f880d4ca7b.png)](https://gyazo.com/5d7280c3d6f58650421c03f880d4ca7b)
+## users テーブル
+| Column                | Type   | Options      |
+|-----------------------|--------|--------------|
+| nickname              | string | null: false  |
+| email                 | string | unique: true |
+| encrypted_password    | string | null: false  |
+### Association
+- has_many :comments
+- has_many :posts
 
-* Ruby version
+## postsテーブル
 
-* System dependencies
+| Column                 | Type       | Options                        |
+|------------------------|------------|--------------------------------|
+| title                  | text       | null: false                    |
+| meal                   | text       | null: false                    |
+| workout                | text       | null: false                    |
+| sex_id                 | integer    | null: false                    |
+| age_id                 | integer    | null: false                    |
+| purpose                | integer    | null: false                    |
+| user                   | references | null: false, foreign_key: true |
 
-* Configuration
+### Association
 
-* Database creation
+- belongs_to :user
+- has_many   :comments
 
-* Database initialization
+## comments テーブル
 
-* How to run the test suite
+| Column  | Type       | Options                        |
+| ------- | ---------- | ------------------------------ |
+| text    | text       |                                |
+| user    | references | null: false, foreign_key: true |
+| post    | references | null: false, foreign_key: true |
 
-* Services (job queues, cache servers, search engines, etc.)
+### Association
 
-* Deployment instructions
-
-* ...
+- belongs_to :post
+- belongs_to :user
