@@ -4,10 +4,10 @@
   </header>
   <div class="items-sell-main">
     <h2 class="items-sell-title">情報を入力</h2>
-    <%= form_with local: true do |f| %>
+    <%= form_with model: @post, local: true do |f| %>
 
 
-    <%# render 'shared/error_messages', model: f.object %>
+    <%= render 'shared/error_messages', model: f.object %>
 
 
     <%# 商品画像 %>
@@ -18,20 +18,20 @@
         タイトル
         <span class="indispensable">必須</span>
       </div>
-      <%= f.text_area :hoge, class:"items-text", id:"item-name", placeholder:"タイトル（必須 40文字まで)", maxlength:"40" %>
+      <%= f.text_area :title, class:"items-text", id:"item-name", placeholder:"タイトル（必須 40文字まで)", maxlength:"40" %>
       <div class="items-explain">
         <div class="weight-bold-text">
           運動内容
           <span class="indispensable">必須</span>
         </div>
-        <%= f.text_area :hoge, class:"items-text", id:"item-info", placeholder:"やるべき運動内容（必須 1,000文字まで）例）週3回ジムでの筋トレ,ベンチプレス10回3セット、スクワット10回3セット、チンニング10回3セット、腹筋30回3セット" ,rows:"7" ,maxlength:"1000" %>
+        <%= f.text_area :workout, class:"items-text", id:"item-info", placeholder:"やるべき運動内容（必須 1,000文字まで）例）週3回ジムでの筋トレ,ベンチプレス10回3セット、スクワット10回3セット、チンニング10回3セット、腹筋30回3セット" ,rows:"7" ,maxlength:"1000" %>
       </div>
       <div class="items-explain">
         <div class="weight-bold-text">
           食事内容
           <span class="indispensable">必須</span>
         </div>
-        <%= f.text_area :hoge, class:"items-text", id:"item-info", placeholder:"毎日の食事内容（必須 1,000文字まで）例）朝：おにぎり1個,牛肉200g,お味噌汁 昼: おにぎり1個,鳥胸肉200g,野菜　夜: おにぎり1個,脂身の少ない肉200g,野菜　間食: ナッツ、プロテイン"  ,rows:"7" ,maxlength:"1000" %>
+        <%= f.text_area :meal, class:"items-text", id:"item-info", placeholder:"毎日の食事内容（必須 1,000文字まで）例）朝：おにぎり1個,牛肉200g,お味噌汁 昼: おにぎり1個,鳥胸肉200g,野菜　夜: おにぎり1個,脂身の少ない肉200g,野菜　間食: ナッツ、プロテイン"  ,rows:"7" ,maxlength:"1000" %>
       </div>
     </div>
     <%# /商品名と商品説明 %>
@@ -44,22 +44,22 @@
           性別
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:hoge, [], :hoge, :hoge, {}, {class:"select-box", id:"item-category"}) %>
+        <%= f.collection_select(:sex_id, Sex.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
         <div class="weight-bold-text">
           年代
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:hoge, [], :hoge, :hoge, {}, {class:"select-box", id:"item-sales-status"}) %>
+        <%= f.collection_select(:age_id, Age.all, :id, :name, {}, {class:"select-box", id:"item-sales-status"}) %>
         <div class="weight-bold-text">
           運動スタイル
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:hoge, [], :hoge, :hoge, {}, {class:"select-box", id:"item-shipping-fee-status"}) %>
+        <%= f.collection_select(:style_id, Style.all, :id, :name, {}, {class:"select-box", id:"item-shipping-fee-status"}) %>
         <div class="weight-bold-text">
           目的
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:hoge, [], :hoge, :hoge, {}, {class:"select-box", id:"item-prefecture"}) %>
+        <%= f.collection_select(:purpose_id, Purpose.all, :id, :name, {}, {class:"select-box", id:"item-prefecture"}) %>
       </div>
     </div>
     <%# /配送について %>
