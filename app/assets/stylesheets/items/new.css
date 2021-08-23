@@ -53,41 +53,11 @@
   padding-left: 20px;
 }
 
-.question {
-  width: 20px;
-  height: 20px;
-  border-radius: 10px;
-  background: #0099e8;
-  color: #FFF;
-  font-size: 13px;
-  text-align: center;
-  line-height: 20px;
-  text-decoration: none;
-  margin-left: 5px;
-}
-
-.question-text {
-  display: flex;
-}
 
 /* /共通 */
 
 /* 商品画像 */
-.img-upload {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  padding: 2vh 0;
-}
 
-.click-upload {
-  margin: 15px 0;
-  min-width: 250px;
-}
-
-.click-upload>p {
-  margin-bottom: 15px;
-}
 
 /* /商品画像 */
 
@@ -130,48 +100,11 @@
 /* /商品の詳細など */
 
 /* 販売価格 */
-.sell-price {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
 
-.price-content {
-  width: 300px;
-  border-bottom: 1px solid #ccc;
-  padding: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.price-text {
-  /* min-width: 170px; */
-  display: flex;
-  align-items: center;
-}
-
-.sell-yen {
-  font-size: 18px;
-}
-
-.price-input {
-  height: 30px;
-  text-align: right;
-  padding-right: 10px;
-}
 
 /* /販売価格 */
 
 /* 注意書き */
-.caution {
-  padding: 5vh 0;
-}
-
-.sentence>a {
-  color: #0099e8;
-  text-decoration: none;
-}
 
 /* /注意書き */
 
