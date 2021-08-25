@@ -41,6 +41,7 @@
     <% @posts.each do |post|%>
       <%# 商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
       <li class='list'>
+      <%= link_to post_path(post.id), method: :get do %>
         <div class='item-info'>
           <h3 class='item-name'>
             <%= post.title %>
@@ -49,6 +50,7 @@
             <span><%= post.sex.name %><br><%= post.purpose.name %></span>
           </div>
         </div>
+        <% end %>
       </li>
       <% end %>
       <%# //商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
