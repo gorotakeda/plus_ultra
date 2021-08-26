@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: :index
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-  before_action :search_product, only: [:index, :search]
+  before_action :search_product, only: [:index, :search, :show]
 
 
   def index
@@ -23,7 +23,7 @@ class PostsController < ApplicationController
   end
 
   def show
-
+    set_post_column
   end
 
   def edit
@@ -46,7 +46,7 @@ class PostsController < ApplicationController
   end
 
   def search
-    @results = @p.result.includes(:post)
+    @results = @p.result
   end
 
   private
@@ -64,7 +64,10 @@ class PostsController < ApplicationController
   end
 
   def set_post_column
-    @post_name = Post.select("title").distinct
+    @post_sex = Post.select("sex_id").distinct
+    @post_style = Post.select("style_id").distinct
+    @post_purpose = Post.select("purpose_id").distinct
+    @post_age = Post.select("age_id").distinct
   end
 
 end

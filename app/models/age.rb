@@ -1,11 +1,11 @@
 class Age < ActiveHash::Base
   self.data = [
     { id: 0, name: '--' },
-    { id: 1, name: '〜19' },
-    { id: 2, name: '20 〜 30' },
-    { id: 3, name: '30 〜 40' },
-    { id: 4, name: '40 〜 50' },
-    { id: 5, name: '60〜 ' },
+    { id: 1, name: '10代' },
+    { id: 2, name: '20代' },
+    { id: 3, name: '30代' },
+    { id: 4, name: '40代〜' },
+    { id: 5, name: '60代〜 ' },
   ]
   include ActiveHash::Associations
   has_many :posts
