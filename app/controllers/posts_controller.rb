@@ -1,8 +1,12 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: :index
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :search_product, only: [:index, :search]
+
+
   def index
     @posts = Post.includes(:user).order('created_at DESC')
+    set_post_column
   end
 
   def new
@@ -41,6 +45,10 @@ class PostsController < ApplicationController
     end
   end
 
+  def search
+    @results = @p.result.includes(:post)
+  end
+
   private
 
   def post_params
@@ -50,4 +58,13 @@ class PostsController < ApplicationController
   def set_post
     @post = Post.find(params[:id])
   end
+
+  def search_product
+    @p = Post.ransack(params[:q]) 
+  end
+
+  def set_post_column
+    @post_name = Post.select("title").distinct
+  end
+
 end

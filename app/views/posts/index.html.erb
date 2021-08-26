@@ -28,7 +28,15 @@
   <%# /画面中央の「会員数日本一位」帯部分 %>
 
   <%# FURIMAの特徴 %>
-  
+  <h1>
+  商品検索
+</h1>
+<%= search_form_for @p, url: search_posts_path do |f| %>
+  <%= f.label :title_eq, '商品名' %>
+  <%= f.collection_select :title_eq, @post_name, :title, :title,  include_blank: '指定なし' %>
+  <br>
+  <%= f.submit '検索' %>
+<% end %>
   <%# /FURIMAの特徴 %>
 
   <%# 商品一覧 %>

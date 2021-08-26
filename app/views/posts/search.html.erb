@@ -1,0 +1,22 @@
+<h1>
+  検索結果
+</h1>
+<%# 検索結果の個数で条件分岐 %>
+<% if @results.length !=0 %>
+  <% @results.each do |post| %>
+  <li class='item-lists'>
+      <%= link_to post_path(post.id), method: :get do %>
+        <div class='item-info'>
+          <h3 class='item-name'>
+            <%= post.title %>
+          </h3>
+          <div class='item-price'>
+            <span><%= post.sex.name %><br><%= post.purpose.name %></span>
+          </div>
+        </div>
+        <% end %>
+  <% end %>
+<% else %>
+  該当するコンテンツはありません
+<% end %>
+<%= link_to 'トップページへ戻る', root_path %>
