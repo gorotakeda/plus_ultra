@@ -1,6 +1,6 @@
 <%= render "shared/header" %>
 
-<%# 商品の概要 %>
+
 <div class="item-show">
   <div class="item-box">
     <h2 class="name">
@@ -44,7 +44,6 @@
       </tbody>
     </table>
 
-    <%# ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
     <% if user_signed_in? %>
     <% if current_user.id == @post.user.id %>
     <%= link_to "情報編集",  edit_post_path(@post.id), method: :get, class: "item-red-btn" %>
@@ -53,21 +52,14 @@
     <% end %>
     <% end %>
 
-    <%# //ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
-
-   
     <div class="option">
       <div class="favorite-btn">
         <%= image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%>
         <span>お気に入り 0</span>
       </div>
-      <div class="report-btn">
-        <%= image_tag "flag.png" ,class:"report-flag-icon" ,width:"20",height:"20"%>
-        <span>不適切な情報の通報</span>
-      </div>
     </div>
   </div>
-  <%# /商品の概要 %>
+
 
   <div class="comment-box">
     <form>

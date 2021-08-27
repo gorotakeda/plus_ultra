@@ -1,0 +1,25 @@
+<div class='item-contents'>
+<h1>
+  検索結果
+</h1>
+<ul class='item-lists'>
+<% if @results.length !=0 %>
+  <% @results.each do |post| %>
+  <li class='list'>
+      <%= link_to post_path(post.id), method: :get do %>
+        <div class='item-info'>
+          <h3 class='item-name'>
+            <%= post.title %>
+          </h3>
+          <div class='item-price'>
+            <span><%= post.sex.name %><br><%= post.purpose.name %></span>
+          </div>
+        </div>
+        <% end %>
+  <% end %>
+<% else %>
+  該当する投稿はありません
+<% end %>
+<%= link_to 'トップページへ戻る', root_path %>
+</ul>
+</div>

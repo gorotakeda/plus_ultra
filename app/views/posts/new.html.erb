@@ -9,9 +9,7 @@
     <%= render 'shared/error_messages', model: f.object %>
 
 
-    <%# 商品画像 %>
-    <%# /商品画像 %>
-    <%# 商品名と商品説明 %>
+
     <div class="new-items">
       <div class="weight-bold-text">
         タイトル
@@ -33,9 +31,7 @@
         <%= f.text_area :meal, class:"items-text", id:"item-info", placeholder:"毎日の食事内容（必須 1,000文字まで）例）朝：おにぎり1個,牛肉200g,お味噌汁 昼: おにぎり1個,鳥胸肉200g,野菜　夜: おにぎり1個,脂身の少ない肉200g,野菜　間食: ナッツ、プロテイン"  ,rows:"7" ,maxlength:"1000" %>
       </div>
     </div>
-    <%# /商品名と商品説明 %>
 
-    <%# 商品の詳細 %>
     <div class="items-detail">
       <div class="weight-bold-text">詳細情報</div>
       <div class="form">
@@ -61,20 +57,12 @@
         <%= f.collection_select(:purpose_id, Purpose.all, :id, :name, {}, {class:"select-box", id:"item-prefecture"}) %>
       </div>
     </div>
-    <%# /配送について %>
 
-    <%# 販売価格 %>
-
-    <%# /販売価格 %>
-
-    <%# 注意書き %>
-    <%# /注意書き %>
-    <%# 下部ボタン %>
     <div class="sell-btn-contents">
       <%= f.submit "投稿する" ,class:"sell-btn" %>
       <%=link_to 'もどる', root_path, class:"back-btn" %>
     </div>
-    <%# /下部ボタン %>
+
   </div>
   <% end %>
 

@@ -1,7 +1,7 @@
 <%= render "shared/header" %>
 <div class='main'>
 
-  <%# 画面上部の「人生を変えるフリマアプリ」帯部分 %>
+
   <div class='title-contents'>
     <h2 class='service-title'>
       体が変われば人生が変わる
@@ -17,21 +17,29 @@
       <%= link_to image_tag("google-play.png", class:"google-btn"), "#" %>
     </div>
   </div>
-  <%# /画面上部の「人生を変えるフリマアプリ」帯部分  %>
 
-  <%# FURIMAが選ばれる3つの理由部分 %>
-
-  <%# /FURIMAが選ばれる3つの理由部分 %>
-
-  <%# 画面中央の「会員数日本一位」帯部分 %>
+<div class="post-search-contents"> 
+  <h2 class='titles'>
+    情報検索
+  </h2>
+    <%= search_form_for @p, url: search_posts_path do |f| %>
+      <%= f.label :sex_id_eq, '対象性別　1:男性　2:女性：' %>
+      <%= f.collection_select :sex_id_eq, @post_sex, :sex_id, :sex_id, include_blank: '指定なし'%>
+      <br>
+      <%= f.label :age_id_eq, '対象年齢　1: 10代　2: 20代　3: 30代　4: 40代~　5: 60代~：' %>
+      <%= f.collection_select :age_id_eq, @post_age, :age_id, :age_id, include_blank: '指定なし'%>
+     <br>
+      <%= f.label :style_id_eq, '運動スタイル　1:ジムトレ 2:家トレ：' %>
+      <%= f.collection_select :style_id_eq, @post_style, :style_id, :style_id, include_blank: '指定なし'%>
+     <br>
+      <%= f.label :purpose_id_eq, '目的　1:ダイエット 2:筋力アップ 3:健康維持：' %>
+      <%= f.collection_select :purpose_id_eq, @post_purpose, :purpose_id, :purpose_id, include_blank: '指定なし'%>
+      <br>
+      <%= f.submit '検索', class:"search-btn" %>
+   <% end %>
+</div>
   
-  <%# /画面中央の「会員数日本一位」帯部分 %>
 
-  <%# FURIMAの特徴 %>
-  
-  <%# /FURIMAの特徴 %>
-
-  <%# 商品一覧 %>
   <div class='item-contents'>
     <h2 class='title'>ピックアップカテゴリー</h2>
     <div class="subtitle" >
@@ -39,7 +47,7 @@
     </div>
     <ul class='item-lists'>
     <% @posts.each do |post|%>
-      <%# 商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
+
       <li class='list'>
       <%= link_to post_path(post.id), method: :get do %>
         <div class='item-info'>
@@ -53,10 +61,7 @@
         <% end %>
       </li>
       <% end %>
-      <%# //商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
 
-      <%# 商品がない場合は以下のダミー商品が表示されるようにしましょう %>
-      <%# 商品がある場合は表示されないようにしましょう %>
       <% if @posts.length == 0 %>
       <li class='list'>
         <div class='item-info'>
@@ -66,14 +71,10 @@
         </div>
       </li>
       <% end %>
-      <%# //商品がある場合は表示されないようにしましょう %>
-      <%# //商品がない場合は以下のダミー商品が表示されるようにしましょう %>
+
     </ul>
   </div>
-  <%# /商品一覧 %>
+
 </div>
-<%= link_to new_post_path, class: 'purchase-btn' do %>
-  <span class='purchase-btn-text'>投稿する</span>
-  <%= image_tag 'icon_camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
-<% end %>
+
 <%= render "shared/footer" %>
