@@ -1,10 +1,11 @@
+<div class='item-contents'>
 <h1>
   検索結果
 </h1>
-
+<ul class='item-lists'>
 <% if @results.length !=0 %>
   <% @results.each do |post| %>
-  <li class='item-lists'>
+  <li class='list'>
       <%= link_to post_path(post.id), method: :get do %>
         <div class='item-info'>
           <h3 class='item-name'>
@@ -17,6 +18,8 @@
         <% end %>
   <% end %>
 <% else %>
-  該当するコンテンツはありません
+  該当する投稿はありません
 <% end %>
 <%= link_to 'トップページへ戻る', root_path %>
+</ul>
+</div>

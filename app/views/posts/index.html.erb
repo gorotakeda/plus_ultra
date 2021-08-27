@@ -18,24 +18,27 @@
     </div>
   </div>
 
-  <h1>
-  情報検索
-</h1>
-<%= search_form_for @p, url: search_posts_path do |f| %>
-  <%= f.label :sex_id_eq, '対象性別　1:男性　2:女性：' %>
-  <%= f.collection_select :sex_id_eq, @post_sex, :sex_id, :sex_id, include_blank: '指定なし'%>
-  <br>
-  <%= f.label :age_id_eq, '対象年齢　1: 10代　2: 20代　3: 30代　4: 40代~　5: 60代~：' %>
-  <%= f.collection_select :age_id_eq, @post_age, :age_id, :age_id, include_blank: '指定なし'%>
-  <br>
-  <%= f.label :style_id_eq, '運動スタイル　1:ジムトレ 2:家トレ：' %>
-  <%= f.collection_select :style_id_eq, @post_style, :style_id, :style_id, include_blank: '指定なし'%>
-  <br>
-  <%= f.label :purpose_id_eq, '目的　1:ダイエット 2:筋力アップ 3:健康維持：' %>
-  <%= f.collection_select :purpose_id_eq, @post_purpose, :purpose_id, :purpose_id, include_blank: '指定なし'%>
-  <br>
-  <%= f.submit '検索' %>
-<% end %>
+<div class="post-search-contents"> 
+  <h2 class='titles'>
+    情報検索
+  </h2>
+    <%= search_form_for @p, url: search_posts_path do |f| %>
+      <%= f.label :sex_id_eq, '対象性別　1:男性　2:女性：' %>
+      <%= f.collection_select :sex_id_eq, @post_sex, :sex_id, :sex_id, include_blank: '指定なし'%>
+      <br>
+      <%= f.label :age_id_eq, '対象年齢　1: 10代　2: 20代　3: 30代　4: 40代~　5: 60代~：' %>
+      <%= f.collection_select :age_id_eq, @post_age, :age_id, :age_id, include_blank: '指定なし'%>
+     <br>
+      <%= f.label :style_id_eq, '運動スタイル　1:ジムトレ 2:家トレ：' %>
+      <%= f.collection_select :style_id_eq, @post_style, :style_id, :style_id, include_blank: '指定なし'%>
+     <br>
+      <%= f.label :purpose_id_eq, '目的　1:ダイエット 2:筋力アップ 3:健康維持：' %>
+      <%= f.collection_select :purpose_id_eq, @post_purpose, :purpose_id, :purpose_id, include_blank: '指定なし'%>
+      <br>
+      <%= f.submit '検索', class:"search-btn" %>
+   <% end %>
+</div>
+  
 
   <div class='item-contents'>
     <h2 class='title'>ピックアップカテゴリー</h2>
