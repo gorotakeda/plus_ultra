@@ -31,7 +31,7 @@ Basic認証: ユーザー名「goro」 パスワード 「0000」
 # ローカルでの動作方法
 
 # テーブル設計
-[![Image from Gyazo](https://i.gyazo.com/5d7280c3d6f58650421c03f880d4ca7b.png)](https://gyazo.com/5d7280c3d6f58650421c03f880d4ca7b)
+[![Image from Gyazo](https://i.gyazo.com/f30ff0e79d7bc2e6e9e9641898d42ece.png)](https://gyazo.com/f30ff0e79d7bc2e6e9e9641898d42ece)
 ## users テーブル
 | Column                | Type   | Options      |
 |-----------------------|--------|--------------|
@@ -51,6 +51,7 @@ Basic認証: ユーザー名「goro」 パスワード 「0000」
 | workout                | text       | null: false                    |
 | sex_id                 | integer    | null: false                    |
 | age_id                 | integer    | null: false                    |
+| style                  | integer    | null: false                    |
 | purpose                | integer    | null: false                    |
 | user                   | references | null: false, foreign_key: true |
 
