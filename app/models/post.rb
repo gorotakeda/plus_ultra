@@ -5,7 +5,7 @@ class Post < ApplicationRecord
   belongs_to :age
   belongs_to :style
   belongs_to :purpose
-
+  has_many :reviews, dependent: :destroy
 
   with_options presence: true do
    validates :title
