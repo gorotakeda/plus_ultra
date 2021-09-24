@@ -1,0 +1,32 @@
+
+<div class="comment-box">
+  <%= form_with model: review, url: post_reviews_path(post), local: true do |f| %>
+  <div class="main-rating">
+      <div class="ratings">
+       <span id="star" class="fa fa-star-o" >
+         <%= image_tag "star.png" ,width:"20",height:"20"%>
+        </span>
+        <span id="star" class="fa fa-star-o" >
+         <%= image_tag "star.png" ,width:"20",height:"20"%>
+        </span>
+        <span id="star" class="fa fa-star-o" >
+         <%= image_tag "star.png" ,width:"20",height:"20"%>
+        </span>
+        <span id="star" class="fa fa-star-o" >
+         <%= image_tag "star.png" ,width:"20",height:"20"%>
+        </span>
+        <span id="star" class="fa fa-star-o" >
+         <%= image_tag "star.png" ,width:"20",height:"20"%>
+        </span>
+      </div>
+      <div class="rating-value-display"><span id="rating-value-display">0</span>/5</div>
+    </div>
+    <%= f.hidden_field :post_id, value: post.id %>
+    <%= f.hidden_field :score, id: "rating-value" %>
+    <%= f.text_field :content, class: "comment-text" %>
+    <button type="submit" class="comment-btn">
+        <%= image_tag "comment.png" ,class:"comment-flag-icon" ,width:"20",height:"25"%>
+        <span>レビュー<span>
+      </button>
+  <% end %>
+</div>

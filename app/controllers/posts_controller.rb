@@ -24,6 +24,7 @@ class PostsController < ApplicationController
 
   def show
     set_post_column
+    @review = Review.new
   end
 
   def edit
